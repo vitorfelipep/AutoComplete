@@ -11,9 +11,15 @@ public class ConversorPais implements Converter{
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) {
+		Integer codigo = null;
+		
+		try{
+			codigo = Integer.valueOf(value);
+		}catch(NumberFormatException e){}
+		
 		
 		if(value != null){
-			Integer codigo = Integer.valueOf(value);
+			
 			for(Pais pais: PerfilUsuarioPojoBean.PAISES){
 				if(codigo.equals(pais.getCodigo())){
 					return pais;

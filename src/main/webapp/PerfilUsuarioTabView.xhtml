@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form id="frm">
+		<p:messages />
+
+			<p:tabView activeIndex="0" dynamic="true" cache="false" orientation="top" effect="fade" effectDuration="fast">
+				<p:tab title="Dados Pessoais">
+					<h:panelGrid columns="2" cellpadding="4">
+						<p:outputLabel value="nome: " for="nome"/>
+						<p:inputText  id="nome" size="40"/>
+						
+						<p:outputLabel value="E-mail: " for="email"/>
+						<p:inputText  id="email" size="40"/>
+						
+						<p:outputLabel value="Telefone: " for="tel"/>
+						<p:inputText  id="tel" size="15"/>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Endereço">
+					<h:panelGrid columns="2" cellpadding="4">
+						<p:outputLabel value="Logradouro: " for="logradouro"/>
+						<p:inputText  id="logradouro" size="40"/>
+						
+						<p:outputLabel value="numero: " for="numero"/>
+						<p:inputText  id="numero" size="10"/>
+						
+						<p:outputLabel value="Bairro: " for="bairro"/>
+						<p:inputText  id="bairro" size="30"/>
+						
+						<p:outputLabel value="Cidade: " for="cidade"/>
+						<p:inputText  id="cidade" size="30"/>
+					</h:panelGrid>
+					
+					<h:outputText value="#{usuarioTabViewMB.dataAtual}" >
+						<f:convertDateTime pattern="dd/MM/yyyy  HH:mm:ss" />
+					</h:outputText>
+				</p:tab>
+			</p:tabView>
+	</h:form>
+
+</h:body>
+</html>

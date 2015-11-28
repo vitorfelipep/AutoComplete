@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form id="frm">
+		<p:button value="Exibir" onclick="meuDialogo.show(); return false;"/>
+		<p:button value="Ocultar" onclick="meuDialogo.hide(); return false;"/>
+		
+		<p:dialog header="Meu dialogo" widgetVar="meuDialogo" draggable="false" resizable="false"
+			modal="false" minimizable="true" maximizable="true" hideEffect="explode">
+			Conteudo do dialogo
+		</p:dialog>
+		
+		<p:button value="Exibir2" onclick="meuDialogo2.show(); return false;"/>
+		<p:button value="Ocultar2" onclick="meuDialogo2.hide(); return false;"/>
+		
+		<p:dialog header="Meu dialogo3" widgetVar="meuDialogo2" draggable="false" resizable="false" 
+		hideEffect="hide" showEffect="shake"  minimizable="true" maximizable="true">
+			
+			Conteudo do dialogo2
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

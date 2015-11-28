@@ -12,22 +12,25 @@
 	<h:form id="frm">
 		<p:messages />
 	
-		<p:dataTable value="#{dataTableMb.funcionarios}" var="funcionario">
-			<p:column headerText="Matricula" style="text-align: center;" width="90">
+		<p:dataTable value="#{dataTableMb.funcionarios}" var="funcionario" sortBy="#{funcionario.matricula}"
+						sortOrder="descending" rows="10" paginator="true" paginatorPosition="both" rowsPerPageTemplate="10, 20 ,50"
+						paginatorAlwaysVisible="false">
+			<p:column headerText="Matricula" style="text-align: center;" 
+					  sortBy="#{funcionario.matricula}"	width="90">
 				<h:outputText value="#{funcionario.matricula}"/>
 			</p:column>
 			
-			<p:column headerText="Nome">
+			<p:column headerText="Nome" sortBy="#{funcionario.nome}">
 				<h:outputText value="#{funcionario.nome}"/>
 			</p:column>
 			
-			<p:column headerText="Data de admissão" width="180" style="text-align: center">
+			<p:column headerText="Data de admissão" width="180" style="text-align: center" sortBy="#{funcionario.dataEmissao}">
 				<h:outputText value="#{funcionario.dataEmissao}">
 					<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss"/>
 				</h:outputText>
 			</p:column>
 			
-			<p:column headerText="Salario" style="text-align: right" width="150">
+			<p:column headerText="Salario" style="text-align: right" width="150" sortBy="#{funcionario.salario}">
 				<h:outputText value="#{funcionario.salario}" >
 					<f:convertNumber type="currency" locale="pt_BR"/>
 				</h:outputText>

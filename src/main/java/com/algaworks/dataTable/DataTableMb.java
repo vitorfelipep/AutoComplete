@@ -28,7 +28,7 @@ public class DataTableMb implements Serializable{
 	public DataTableMb() throws ParseException{
 		funcionarios = new ArrayList<>();
 		
-		for(int i = 0; i< 50; i++){
+		for(int i = 0; i< 100; i++){
 			adicionarFuncionario();
 		}
 	}

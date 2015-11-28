@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	
+</h:head>
+<h:body>
+	
+	<script>
+		//Comentar esta funçao caso queira usar o botão e retirar o oncomplete="tratarInclusaoProduto(args)" do commandButton
+		function tratarInclusaoProduto(args){
+			if(!args.validationFailed){
+				inclusaoProdutoDialog.hide();
+			}
+		}
+	</script>
+	
+	<h:form id="frm">
+		<p:button value="Adicionar Produto" onclick="inclusaoProdutoDialog.show(); return false;"/>
+		
+		<p:dataTable value="#{produtosBean.produtos}" var="pro" id="produtosTable"
+			emptyMessage="Não existe produtos" paginator="true" paginatorAlwaysVisible="false" rows="5" rowsPerPageTemplate="5,10,15" >
+			
+			<p:column headerText="Produto" sortBy="#{pro}">
+				<h:outputText value="#{pro}"/>
+			</p:column>		
+		</p:dataTable>
+		
+		<p:dialog header="Inclusao de produtos" widgetVar="inclusaoProdutoDialog" 
+			modal="true" resizable="false" >
+			<h:panelGroup id="inclusaoPanel">
+				<p:messages />
+				
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Nome: " />
+					<p:inputText value="#{produtosBean.nomeProduto}" required="true"
+						requiredMessage="Informe o nome do produto."/>
+				</h:panelGrid>
+				
+				<p:commandButton value="incluir" action="#{produtosBean.incluirProduto}" update="produtosTable inclusaoPanel" 
+					oncomplete="tratarInclusaoProduto(args)"/>
+				<p:button value="fechar" onclick="inclusaoProdutoDialog.hide(); return false;"/>
+			</h:panelGroup>
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

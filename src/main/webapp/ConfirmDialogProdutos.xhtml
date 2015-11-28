@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form id="frm">
+		<p:dataTable value="#{produtos1Bean.produtos}" var="pro" id="produtosTable"
+			emptyMessage="Não existe produtos" paginator="true" paginatorAlwaysVisible="false" rows="5" rowsPerPageTemplate="5,10,15" >
+			
+			<p:column headerText="Produto" sortBy="#{pro}">
+				<h:outputText value="#{pro}"/>
+			</p:column>
+			<p:column width="30">
+				<p:commandButton  icon="ui-icon-trash" oncomplete="confirmacaoExclusao.show();">
+					<f:setPropertyActionListener value="#{pro}" target="#{produtos1Bean.produtoSelecionado}" />
+				</p:commandButton>
+			</p:column>		
+		</p:dataTable>
+		
+		<p:confirmDialog header="Exclusão de produto" 
+				message="Tem certeza que deseja excluir este produto?"
+				widgetVar="confirmacaoExclusao"> 
+				
+				<p:commandButton value="Sim" update="produtosTable"
+					oncomplete="confirmacaoExclusao.hide(); " action="#{produtos1Bean.excluirProduto}" />
+				<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;"/>
+		
+		</p:confirmDialog>
+	</h:form>
+</h:body>
+</html>
